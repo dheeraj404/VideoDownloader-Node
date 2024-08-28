@@ -1,0 +1,28 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "async": "^3.2.6",
+    "cheerio": "^1.0.0",
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "facebook-video-downloader": "^1.0.1",
+    "fb-downloader-scrapper": "^2.0.0",
+    "instagram-url-direct": "^1.0.20",
+    "install": "^0.13.0",
+    "node-fetch": "^3.3.2",
+    "npm": "^10.8.2",
+    "puppeteer": "^23.1.1",
+    "request": "^2.88.2",
+    "twitter-dl": "^1.0.6",
+    "twitter-url-direct": "^1.0.9",
+    "youtube-dl": "^3.5.0"
+  }
+}
