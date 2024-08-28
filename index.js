@@ -3,20 +3,13 @@ const fbDownloader = require("fb-downloader-scrapper");
 const request = require("request");
 const instagramGetUrl = require("instagram-url-direct");
 const app = express();
-const port = 3000;
-const twitterGetUrl = require("twitter-url-direct");
-const puppeteer = require("puppeteer");
-const twitterDl = require('twitter-dl');
+const port = process.env.PORT || 3000;
+
 const cors = require("cors");
 app.use(cors());
 const bodyParser = require("body-parser");
-const { exec } = require("child_process");
-const fs = require("fs");
+
 const path = require("path"); // Import the path module
-
-
-
-
 
 // Endpoint to download and stream the video
 app.get("/download-video", async (req, res) => {
@@ -82,71 +75,6 @@ app.get("/download-instagram-video", async (req, res) => {
     res.status(500).json({ error: "Failed to fetch Instagram video" });
   }
 });
-
-
-
-'use strict';
-
-// Import the hypothetical twitter-dl package
-
-
-
-
-
-const axios = require('axios');
-
-
-async function downloadVideo(videoUrl) {
-  const browser = await puppeteer.launch({ headless: false, defaultViewport: null });
-  const page = await browser.newPage();
-
-  let videoSourceUrl = null; // This will hold the video URL
-
-  page.on('request', request => {
-      if (request.resourceType() === 'media') {
-          videoSourceUrl = request.url(); // Capture the URL
-          console.log('Media URL found:', videoSourceUrl);
-      }
-  });
-
-  await page.goto(videoUrl, { waitUntil: 'networkidle2' });
-
-  // Wait for potential video source to load using a universal JavaScript approach
-  await new Promise(resolve => setTimeout(resolve, 10000));
-
-  if (videoSourceUrl) {
-      await downloadFile(videoSourceUrl, 'video.mp4'); // Download the video
-  } else {
-      console.log('No video URL found');
-  }
-
-  await browser.close();
-}
-
-async function downloadFile(fileUrl, outputPath) {
-  const response = await axios({
-      method: 'GET',
-      url: fileUrl,
-      responseType: 'stream'
-  });
-
-  const writer = fs.createWriteStream(outputPath);
-
-  response.data.pipe(writer);
-
-  return new Promise((resolve, reject) => {
-      writer.on('finish', resolve);
-      writer.on('error', reject);
-  });
-}
-
-
-
-downloadVideo('https://x.com/TheWorldOfFunny/status/1827099171968450631');
-
-
-
-
 
 app.listen(port, () => {
   console.log(`Server is running at http://localhost:${port}`);
