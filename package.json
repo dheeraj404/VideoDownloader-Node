@@ -20,9 +20,6 @@
     "node-fetch": "^3.3.2",
     "npm": "^10.8.2",
     "puppeteer": "^23.1.1",
-    "request": "^2.88.2",
-    "twitter-dl": "^1.0.6",
-    "twitter-url-direct": "^1.0.9",
-    "youtube-dl": "^3.5.0"
+    "request": "^2.88.2"
   }
 }
